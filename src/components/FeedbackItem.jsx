@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Card from './shared/Card'
 import { FaTimes } from 'react-icons/fa'
+import PropTypes from 'prop-types'
 
 const FeedbackItem = ({ item, handleDelete }) => {
    const [rating, setRating] = useState(item.rating)
@@ -18,6 +19,10 @@ const FeedbackItem = ({ item, handleDelete }) => {
          <div className='text-display'>{text}</div>
       </Card>
    )
+}
+
+Card.propTypes = {
+   item: PropTypes.array
 }
 
 export default FeedbackItem

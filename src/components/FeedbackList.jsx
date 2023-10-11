@@ -16,4 +16,8 @@ const FeedbackList = ({ feedback, handleDelete }) => {
    )
 }
 
+FeedbackList.propTypes = {
+   feedback: PropTypes.array
+}
+
 export default FeedbackList
