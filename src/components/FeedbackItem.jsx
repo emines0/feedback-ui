@@ -1,20 +1,25 @@
 import { useState } from 'react'
 import Card from './shared/Card'
-import { FaTimes } from 'react-icons/fa'
+import { FaTimes, FaEdit } from 'react-icons/fa'
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
-const FeedbackItem = ({ item, handleDelete }) => {
+const FeedbackItem = ({ item }) => {
+   // eslint-disable-next-line no-unused-vars
    const [rating, setRating] = useState(item.rating)
+   // eslint-disable-next-line no-unused-vars
    const [text, setText] = useState(item.text)
+   const { deleteFeedback, editFeedback } = useContext(FeedbackContext)
 
-   const handleClick = (id) => {
-      console.log(id)
-   }
    return (
       <Card>
          <div className='num-display'>{rating}</div>
-         <button onClick={() => handleDelete(item.id)} className='close'>
+         <button onClick={() => deleteFeedback(item.id)} className='close'>
             <FaTimes color='purple' />
+         </button>
+         <button onClick={() => editFeedback(item)} className='edit'>
+            <FaEdit color='purple' />
          </button>
          <div className='text-display'>{text}</div>
       </Card>
